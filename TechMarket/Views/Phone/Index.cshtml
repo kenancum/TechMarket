@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TechMarket.Models.Phone>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Brand", "Index",new { sortOrder= ViewBag.NextSortOrderBrand })
+        </th>
+        <th>
+            @Html.ActionLink("Model", "Index", new { sortOrder = ViewBag.NextSortOrderModel })
+        </th>
+        <th>
+            @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.NextSortOrderPrice })
+        </th>
+        <th>
+            Number of Stocks
+        </th>
+        <th>Action Links</th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PhoneID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.PhoneID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PhoneID })
+        </td>
+    </tr>
+}
+
+</table>
